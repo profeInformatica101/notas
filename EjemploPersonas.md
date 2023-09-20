@@ -26,7 +26,8 @@ INSERT INTO persona (nombre, apellido, edad) VALUES
 ('Patricia', 'López', 27);
 ```
 
-## El siguiente es un ejemplo simplificado de cómo podrías estructurar y programar un PersonaDAO asumiendo que estás utilizando JDBC para conectar tu aplicación Java con una base de datos MySQL/MariaDB
+## PersonaDAO.java 
+### Asumiendo que estás utilizando JDBC para conectar tu aplicación Java con una base de datos MySQL/MariaDB
 ```java
 package com.tuempresa.dao;
 
