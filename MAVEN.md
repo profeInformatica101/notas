@@ -75,3 +75,16 @@ cd tuaplicacion
 
     Si ves errores relacionados con las dependencias o el pom.xml, es una buena práctica actualizar el proyecto. Haz clic derecho en el nombre del proyecto en el Explorador de Proyectos > Maven > Update Project. Esto resolverá las dependencias y sincronizará tu proyecto con el archivo pom.xml.
 ```
+## 4. Crea un Servlet, ejecutalo en el Servidor y prueba.
+## 5. Conexión a la base de datos:
+```java
+public class DatabaseConnector {
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/tubasededatos?useSSL=false&serverTimezone=UTC";
+    private static final String JDBC_USER = "root";
+    private static final String JDBC_PASS = "tucontraseña";
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
+    }
+}
+'''
