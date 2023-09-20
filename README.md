@@ -15,10 +15,14 @@ Si te encuentras con el error `Access denied for user 'root'@'localhost'` al int
 
 ### 1. Reiniciar MariaDB en modo seguro
 
-Primero, debemos detener el servidor MariaDB:
+Primero, debemos iniciar el servidor MariaDB:
 
 ```bash
-sudo systemctl stop mariadb
+sudo systemctl start mariadb
+```
+Podemos comprobar el servicio esta en ejecución
+```bash
+sudo systemctl status mariadb
 ```
 
 ### 2.Conectarse a MariaDB sin contraseña
