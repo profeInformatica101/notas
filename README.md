@@ -1,5 +1,13 @@
-# notas
+#### Notas
+
+## Instalar el Servidor de Base de Datos 'mariadb'
+```bash
 sudo apt install mariadb-server
+```
+## Descargar el cliente de base de datos 'Dbeaver'
+```url
+https://dbeaver.io/download/
+```
 
 Si te encuentras con el error `Access denied for user 'root'@'localhost'` al intentar conectarte a MariaDB (o MySQL), este documento te guiará paso a paso para resolverlo.
 
@@ -31,4 +39,19 @@ Una vez dentro de la consola de MariaDB/MySQL, ejecuta los siguientes comandos:
 USE mysql;
 FLUSH PRIVILEGES;
 UPDATE user SET password=PASSWORD('tu_nueva_contraseña') WHERE User='root';
+```
+## Nota: Reemplaza tu_nueva_contraseña con la contraseña que desees establecer para el usuario root.
+
+### 4. Salir y reiniciar el servicio MariaDB
+Sal de la consola de MariaDB con:
+```sql
+EXIT;
+```
+Y en tu terminal, reinicia el servicio MariaDB:
+```bash
+sudo systemctl start mariadb
+```
+### 5. Probar la nueva contraseña
+```sql
+mysql -u root -p
 ```
