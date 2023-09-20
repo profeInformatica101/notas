@@ -38,7 +38,7 @@ Una vez dentro de la consola de MariaDB/MySQL, ejecuta los siguientes comandos:
 ```sql
 USE mysql;
 FLUSH PRIVILEGES;
-UPDATE mysql.user SET authentication_string=CONCAT('*', UPPER(SHA1(UNHEX(SHA1('tu_nueva_contraseña'))))) WHERE User='root';
+UPDATE mysql.user SET authentication_string=PASSWORD('tu_nueva_contraseña') WHERE User='root';
 ```
 ## Nota: Reemplaza tu_nueva_contraseña con la contraseña que desees establecer para el usuario root.
 
