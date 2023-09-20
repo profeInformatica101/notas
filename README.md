@@ -37,7 +37,7 @@ mysql -u root
 Una vez dentro de la consola de MariaDB/MySQL, ejecuta los siguientes comandos:
 ```sql
 USE mysql;
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewStr0ngPassword';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'tu_nueva_contraseña';
 FLUSH PRIVILEGES;
 ```
 ## Nota: Reemplaza tu_nueva_contraseña con la contraseña que desees establecer para el usuario root.
