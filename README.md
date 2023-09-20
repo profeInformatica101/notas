@@ -53,7 +53,7 @@ mysql -u root -p
 ```
 
 
-Si quieres conectarte desde la red local al servicio de base de datos
+# Si quieres conectarte desde la red local al servicio de base de datos
 
 ## Pasos 
 
