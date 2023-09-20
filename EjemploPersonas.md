@@ -26,66 +26,43 @@ INSERT INTO persona (nombre, apellido, edad) VALUES
 ('Patricia', 'López', 27);
 ```
 
-## PersonaDAO.java 
+## Clase DAO - PersonaDAO.java:
 ### Asumiendo que estás utilizando JDBC para conectar tu aplicación Java con una base de datos MySQL/MariaDB
 ```java
-package com.dao;
+package com.myapp.dao;
 
-import com.tuempresa.model.Persona;
+import com.myapp.model.Persona;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonaDAO {
+    private String jdbcURL = "jdbc:mysql://localhost:3306/tu_base_de_datos";
+    private String jdbcUsername = "tu_usuario";
+    private String jdbcPassword = "tu_contraseña";
 
-    private static final String URL = "jdbc:mysql://localhost:3306/Personas";
-    private static final String USER = "root";  // Cambia por tu usuario
-    private static final String PASSWORD = "tuContraseña";  // Cambia por tu contraseña
-
-    static {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<Persona> obtenerPersonas() {
+    public List<Persona> listarPersonas() {
         List<Persona> personas = new ArrayList<>();
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement ps = connection.prepareStatement("SELECT id, nombre, apellido, edad FROM persona");
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Persona persona = new Persona(
-                    rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getInt("edad")
-                );
-                personas.add(persona);
+        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
+            String sql = "SELECT * FROM persona";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nombre = resultSet.getString("nombre");
+                String apellido = resultSet.getString("apellido");
+                int edad = resultSet.getInt("edad");
+                personas.add(new Persona(id, nombre, apellido, edad));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return personas;
     }
-
-    public void guardarPersona(Persona persona) {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement ps = connection.prepareStatement("INSERT INTO persona (nombre, apellido, edad) VALUES (?, ?, ?)")) {
-            ps.setString(1, persona.getNombre());
-            ps.setString(2, persona.getApellido());
-            ps.setInt(3, persona.getEdad());
-            ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Puedes añadir más métodos aquí para actualizar, eliminar, etc.
 }
 ```
 ## Persona.java 
@@ -111,4 +88,47 @@ public class Persona {
     // Getters, setters, toString, etc.
 }
 
+```
+## PersonaServlet
+```java
+@WebServlet("/personas")
+public class PersonaServlet extends HttpServlet {
+    private PersonaDAO personaDAO = new PersonaDAO();
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Persona> personas = personaDAO.listarPersonas();
+        request.setAttribute("personas", personas);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/personas.jsp");
+        dispatcher.forward(request, response);
+    }
+}
+```
+
+## personas.jsp
+### Este archivo puede ser similar al que te proporcioné anteriormente. Solo recuerda que este archivo debe estar en la carpeta src/main/webapp.
+```jsp
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personas</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+        </tr>
+        <c:forEach var="persona" items="${personas}">
+            <tr>
+                <td>${persona.id}</td>
+                <td>${persona.nombre}</td>
+                <td>${persona.apellido}</td>
+                <td>${persona.edad}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</body>
+</html>
 ```
