@@ -29,7 +29,7 @@ INSERT INTO persona (nombre, apellido, edad) VALUES
 ## PersonaDAO.java 
 ### Asumiendo que estás utilizando JDBC para conectar tu aplicación Java con una base de datos MySQL/MariaDB
 ```java
-package com.tuempresa.dao;
+package com.dao;
 
 import com.tuempresa.model.Persona;
 import java.sql.Connection;
