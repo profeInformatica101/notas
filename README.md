@@ -46,10 +46,7 @@ Sal de la consola de MariaDB con:
 ```sql
 EXIT;
 ```
-Y en tu terminal, reinicia el servicio MariaDB:
-```bash
-sudo systemctl start mariadb
-```
+
 ### 5. Probar la nueva contraseña
 ```sql
 mysql -u root -p
