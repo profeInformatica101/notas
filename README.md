@@ -21,15 +21,10 @@ Primero, debemos detener el servidor MariaDB:
 sudo systemctl stop mariadb
 ```
 
-Luego, iniciamos MariaDB sin cargar los privilegios, lo que permite conectarse sin contraseña:
-```bash
-sudo mysqld_safe --skip-grant-tables --skip-networking &
-```
-El argumento --skip-grant-tables permite iniciar MariaDB sin requerir una contraseña y --skip-networking previene las conexiones de red.
-
 ### 2.Conectarse a MariaDB sin contraseña
 Abre una nueva terminal o pestaña y conéctate como el usuario root:
 ```bash
+sudo su
 mysql -u root
 ```
 
