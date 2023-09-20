@@ -131,7 +131,7 @@ cd tuaplicacion
 
 </project>
 
-'''
+```
 ### Este pom.xml incluye la dependencia para la API de Servlet.
 
 Recuerda que al utilizar Maven, la estructura de directorios del proyecto es importante. Las clases Java deben estar en src/main/java, y los recursos web (como los archivos web.xml, páginas JSP, archivos HTML, etc.) deben estar en src/main/webapp.
