@@ -21,6 +21,19 @@ mvn -v
 ```bash
 mvn archetype:generate -DgroupId=com.myapp -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
 ```
+```
+El comando anterior hará lo siguiente:
+
+    archetype:generate: es un comando de Maven para crear un nuevo proyecto basado en un arquetipo. Un arquetipo es una especie de plantilla de proyecto.
+
+    -DgroupId=com.myapp: define el groupId de tu proyecto. En Maven, el groupId representa generalmente una organización o un proyecto, y es una parte integral de la coordenada única del proyecto.
+
+    -DartifactId=myapp: define el artifactId de tu proyecto. En Maven, el artifactId es el nombre del proyecto sin versión.
+
+    -DarchetypeArtifactId=maven-archetype-quickstart: especifica el arquetipo que quieres usar. En este caso, estamos usando maven-archetype-quickstart, que es un arquetipo básico que crea una simple estructura de proyecto Java.
+
+    -DinteractiveMode=false: esto simplemente dice a Maven que no entre en modo interactivo y haga preguntas durante la generación del proyecto.
+```
 
 ### Esto generará un proyecto web básico. Luego, navega al directorio de tu aplicación:
 ```bash
