@@ -11,7 +11,7 @@ https://dbeaver.io/download/
 
 Si te encuentras con el error `Access denied for user 'root'@'localhost'` al intentar conectarte a MariaDB (o MySQL), este documento te guiará paso a paso para resolverlo.
 
-## Pasos
+## Pasos 
 
 ### 1. Reiniciar MariaDB en modo seguro
 
@@ -50,4 +50,34 @@ EXIT;
 ### 5. Probar la nueva contraseña
 ```sql
 mysql -u root -p
+```
+
+
+Si quieres conectarte desde la red local al servicio de base de datos
+
+## Pasos 
+
+### 1. Desde el Host donde tienes instalado MariaDB
+
+```bash
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+```
+Busca la línea que dice bind-address y cámbiala a:
+```bash
+bind-address = 0.0.0.0
+```
+Guarda y cierra el archivo.
+
+### 2 Reinicia MariaDB:
+```bash
+sudo systemctl restart mariadb
+```
+### 3 Conéctate a MariaDB::
+```bash
+mysql -u root -p
+```
+Otorga permisos:
+```sql
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'tu_contraseña';
+FLUSH PRIVILEGES;
 ```
