@@ -26,3 +26,64 @@ INSERT INTO persona (nombre, apellido, edad) VALUES
 ('Patricia', 'López', 27);
 ```
 
+## El siguiente es un ejemplo simplificado de cómo podrías estructurar y programar un PersonaDAO asumiendo que estás utilizando JDBC para conectar tu aplicación Java con una base de datos MySQL/MariaDB
+```java
+package com.tuempresa.dao;
+
+import com.tuempresa.model.Persona;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PersonaDAO {
+
+    private static final String URL = "jdbc:mysql://localhost:3306/Personas";
+    private static final String USER = "root";  // Cambia por tu usuario
+    private static final String PASSWORD = "tuContraseña";  // Cambia por tu contraseña
+
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Persona> obtenerPersonas() {
+        List<Persona> personas = new ArrayList<>();
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement ps = connection.prepareStatement("SELECT id, nombre, apellido, edad FROM persona");
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Persona persona = new Persona(
+                    rs.getInt("id"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getInt("edad")
+                );
+                personas.add(persona);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return personas;
+    }
+
+    public void guardarPersona(Persona persona) {
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement ps = connection.prepareStatement("INSERT INTO persona (nombre, apellido, edad) VALUES (?, ?, ?)")) {
+            ps.setString(1, persona.getNombre());
+            ps.setString(2, persona.getApellido());
+            ps.setInt(3, persona.getEdad());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Puedes añadir más métodos aquí para actualizar, eliminar, etc.
+}
+```
