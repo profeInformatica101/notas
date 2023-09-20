@@ -28,6 +28,7 @@ INSERT INTO persona (nombre, apellido, edad) VALUES
 
 ## Clase DAO - PersonaDAO.java:
 ### Asumiendo que estás utilizando JDBC para conectar tu aplicación Java con una base de datos MySQL/MariaDB
+#### DAO significa Data Access Object (Objeto de Acceso a Datos). Es un patrón de diseño utilizado en desarrollo de software para aislar la lógica de acceso a la base de datos del resto de la aplicación. La idea principal es separar la lógica específica de la base de datos (como consultas SQL) del código de negocio
 ```java
 package com.myapp.dao;
 
