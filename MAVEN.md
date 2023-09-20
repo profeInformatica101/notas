@@ -47,4 +47,31 @@ cd tuaplicacion
 ```
 
 #### NOTA: Asegúrate de verificar las últimas versiones de las dependencias mencionadas anteriormente.
+## 3. Abrir con Eclipse
+```
+    1. Abrir Eclipse:
 
+    Inicia Eclipse.
+
+   2.  Seleccionar espacio de trabajo:
+
+    Si es la primera vez que abres Eclipse, te pedirá seleccionar un directorio como espacio de trabajo. Puedes usar el directorio predeterminado o seleccionar uno diferente según tus preferencias.
+
+   3.  Importar el proyecto Maven:
+
+    a. En el menú principal de Eclipse, selecciona File > Import....
+
+    b. En el cuadro de diálogo que aparece, expande Maven y selecciona Existing Maven Projects. Luego, haz clic en Next.
+
+    c. En el siguiente cuadro de diálogo, haz clic en Browse y navega hasta el directorio donde creaste tu proyecto Maven.
+
+    d. Una vez seleccionado el directorio, Eclipse debería encontrar el archivo pom.xml y mostrar el proyecto en la lista de proyectos a importar. Asegúrate de que el proyecto esté seleccionado y haz clic en Finish.
+
+   4.  Verificar la importación:
+
+    El proyecto Maven ahora debería aparecer en el Explorador de Proyectos (Project Explorer) en Eclipse. Si hay algún error en el proyecto (por ejemplo, errores de dependencia), aparecerán en el archivo pom.xml. Asegúrate de resolver cualquier problema que encuentres para que el proyecto se compile y ejecute correctamente.
+
+  5.  Actualizar el proyecto (opcional):
+
+    Si ves errores relacionados con las dependencias o el pom.xml, es una buena práctica actualizar el proyecto. Haz clic derecho en el nombre del proyecto en el Explorador de Proyectos > Maven > Update Project. Esto resolverá las dependencias y sincronizará tu proyecto con el archivo pom.xml.
+```
