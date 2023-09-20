@@ -5,10 +5,7 @@
 sudo apt install mariadb-server
 ```
 ## Descargar el cliente de base de datos 'Dbeaver'
-[Descargar DBeaver](https://dbeaver.io/download/)
-```url
-
-```
+[Enlace a DBeaver](https://dbeaver.io/download/)
 
 # Si te encuentras con el error `Access denied for user 'root'@'localhost'` al intentar conectarte a MariaDB (o MySQL), este documento te guiará paso a paso para resolverlo.
 
