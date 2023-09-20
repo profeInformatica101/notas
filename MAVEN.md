@@ -75,16 +75,65 @@ cd tuaplicacion
 
     Si ves errores relacionados con las dependencias o el pom.xml, es una buena práctica actualizar el proyecto. Haz clic derecho en el nombre del proyecto en el Explorador de Proyectos > Maven > Update Project. Esto resolverá las dependencias y sincronizará tu proyecto con el archivo pom.xml.
 ```
-## 4. Crea un Servlet, ejecutalo en el Servidor y prueba.
-## 5. Conexión a la base de datos:
-```java
-public class DatabaseConnector {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/tubasededatos?useSSL=false&serverTimezone=UTC";
-    private static final String JDBC_USER = "root";
-    private static final String JDBC_PASS = "tucontraseña";
 
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
-    }
-}
+## 4. POM:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tuempresa</groupId>
+    <artifactId>tuprojecto</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <!-- Dependencia para Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope> <!-- Esta dependencia es proporcionada por el contenedor de servlets (ej. Tomcat) -->
+        </dependency>
+
+        <!-- Si necesitas acceso a una base de datos MySQL -->
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.25</version>
+        </dependency>
+
+
+        <!-- Otras dependencias que necesites pueden ir aquí -->
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <!-- Plugin para Maven y WAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <!-- Otras configuraciones de plugins que necesites pueden ir aquí -->
+
+        </plugins>
+    </build>
+
+</project>
+
 '''
+### Este pom.xml incluye la dependencia para la API de Servlet.
+
+Recuerda que al utilizar Maven, la estructura de directorios del proyecto es importante. Las clases Java deben estar en src/main/java, y los recursos web (como los archivos web.xml, páginas JSP, archivos HTML, etc.) deben estar en src/main/webapp.
+
+Una vez que hayas configurado tu proyecto correctamente, puedes usar Maven para construir tu proyecto (mvn clean install) y generar un archivo WAR, que luego puede ser desplegado en un servidor como Tomcat.
