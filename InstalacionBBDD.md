@@ -1,4 +1,4 @@
-#### Notas
+# Instalación Base de Datos
 
 ## Instalar el Servidor de Base de Datos 'mariadb'
 ```bash
