@@ -19,8 +19,9 @@ mvn -v
 # Creación de Proyecto MAVEN
 ## 1. Crear el proyecto Maven:
 ```bash
-mvn archetype:create ‐DgroupId=com.myapp ‐DartifactId=webapp ‐DarchetypeArtifactId=maven‐archetype‐webapp
+mvn archetype:generate -DgroupId=com.myapp -DartifactId=myapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
 ```
+
 ### Esto generará un proyecto web básico. Luego, navega al directorio de tu aplicación:
 ```bash
 cd tuaplicacion
