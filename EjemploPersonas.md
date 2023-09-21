@@ -69,7 +69,7 @@ public class PersonaDAO {
 ## Persona.java 
 ### Modelo
 ```java
-package com.tuempresa.model;
+package com.myapp.model;
 
 public class Persona {
     private int id;
