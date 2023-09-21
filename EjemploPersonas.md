@@ -42,13 +42,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PersonaDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/tu_base_de_datos";
-    private String jdbcUsername = "tu_usuario";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/mi_bbdd_proyecto";
+    private String jdbcUsername = "root";
     private String jdbcPassword = "tu_contraseña";
 
     public List<Persona> listarPersonas() {
         List<Persona> personas = new ArrayList<>();
-        try (Connection connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword)) {
+        try (Connection connection = DriverManager.getConnectiondada(jdbcURL, jdbcUsername, jdbcPassword)) {
             String sql = "SELECT * FROM persona";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
