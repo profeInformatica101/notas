@@ -1,7 +1,6 @@
 # JSON-java
 ```url
-http://stleary.github.io/JSON-java/index.html
-https://github.com/stleary/JSON-java/releases
+http://www.java2s.com/Code/Jar/g/Downloadgson222jar.htm#google_vignette
 ```
 
 # Project Lombok
