@@ -17,7 +17,6 @@ sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
  ```sh
 sudo apt update
 ```
-
 5. Instalar Java 17:
 ```sh
 sudo apt install adoptopenjdk-17-hotspot
