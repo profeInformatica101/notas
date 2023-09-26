@@ -19,5 +19,6 @@ sudo apt update
 ```
 5. Instalar Java 17:
 ```sh
-sudo apt install adoptopenjdk-17-hotspot
+apt install openjdk-17-jdk openjdk-17-jre
+
 ```
