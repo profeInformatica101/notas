@@ -1,4 +1,4 @@
-#Instalación de JAVA 17 en SSOO Linux DEB
+# Instalación de JAVA 17 en SSOO Linux DEB
 
 1. Abrir una terminal.
 2. Importar la clave GPG del repositorio:
