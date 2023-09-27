@@ -3,7 +3,21 @@ La biblioteca Gson es una biblioteca Java proporcionada por Google que se utiliz
 ```url
 http://www.java2s.com/Code/Jar/g/Downloadgson222jar.htm#google_vignette
 ```
+## JSON a Objeto (Deserialización)
+```java
+import com.google.gson.Gson;
 
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("John", "Doe", 25);
+        Gson gson = new Gson();
+        String json = gson.toJson(person);
+        System.out.println(json); // Imprime la representación JSON del objeto person
+    }
+}
+```
+
+## Objeto a JSON (Serialización)
 ```java
 import com.google.gson.Gson;
 
