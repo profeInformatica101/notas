@@ -1,7 +1,32 @@
 # JSON-java
+La biblioteca Gson es una biblioteca Java proporcionada por Google que se utiliza para convertir objetos Java a su representación JSON y viceversa. Esto es especialmente útil cuando estás trabajando con servicios web y APIs que intercambian datos en formato JSON, permitiéndote serializar y deserializar objetos Java de y hacia JSON de manera fácil y efectiva.
 ```url
 http://www.java2s.com/Code/Jar/g/Downloadgson222jar.htm#google_vignette
 ```
+
+```java
+import com.google.gson.Gson;
+
+public class Main {
+    public static void main(String[] args) {
+        String json = "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"age\":25}";
+        Gson gson = new Gson();
+        Person person = gson.fromJson(json, Person.class);
+        System.out.println(person); // Imprime la representación del objeto person reconstruido
+    }
+}
+```
+Si estás utilizando Maven, puedes añadir Gson a tu proyecto añadiendo la siguiente dependencia a tu archivo pom.xml:
+```
+<dependency>
+    <groupId>com.google.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.9</version> <!-- Usa la versión que prefieras, esta es una de las más recientes -->
+</dependency>
+
+```
+
+
 
 # Project Lombok
 https://projectlombok.org
