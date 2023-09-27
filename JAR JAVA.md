@@ -51,7 +51,13 @@ https://projectlombok.org
 #  JSTL (JavaServer Pages Standard Tag Library)
 La especificación define lo que deben hacer las etiquetas y funciones, la implementación es el código real que hace el trabajo, EL proporciona una forma de evaluar expresiones dentro de JSP, y compat proporciona soporte para versiones anteriores de JSTL.
 ```url
-https://repo1.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar
+
+http://www.java2s.com/Code/Jar/j/Downloadjavaxservletjspjstl121jar.htm
+
+http://www.java2s.com/Code/Jar/j/Downloadjavaxservletjspjstlapi121jar.htm
+
+
+
 ```
 
 
