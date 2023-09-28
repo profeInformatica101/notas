@@ -1,1 +1,109 @@
 ### TODO
+
+# Interfaz 'PersonaService'
+
+```java
+import java.util.List;
+
+public interface PersonaService {
+
+    Persona createPersona(Persona persona);
+
+    Persona readPersona(Long id);
+
+    Persona updatePersona(Persona persona);
+
+    void deletePersona(Long id);
+
+    List<Persona> getAllPersonas();
+}
+
+```
+
+# PersonaServiceImpl implementación Mocking de  'PersonaService' con datos ficticios
+
+
+```java
+import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+public class PersonaServiceImpl implements PersonaService {
+    
+    private final Map<Long, Persona> personas = new HashMap<>();
+
+    public PersonaServiceImpl() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            personas.put(1L, new Persona(1L, "Juan", "Perez", sdf.parse("01-01-1990"), "Sevilla"));
+            personas.put(2L, new Persona(2L, "Ana", "Gomez", sdf.parse("15-05-1985"), "Málaga"));
+            personas.put(3L, new Persona(3L, "Carlos", "Santana", sdf.parse("22-03-1980"), "Granada"));
+            personas.put(4L, new Persona(4L, "Maria", "Jimenez", sdf.parse("09-09-1992"), "Córdoba"));
+            //...
+            personas.put(27L, new Persona(27L, "Isabel", "Ortiz", sdf.parse("12-10-1975"), "Jaén"));
+            personas.put(28L, new Persona(28L, "Luis", "Romero", sdf.parse("25-11-1999"), "Almería"));
+            personas.put(29L, new Persona(29L, "Carmen", "Lopez", sdf.parse("06-06-1988"), "Huelva"));
+            personas.put(30L, new Persona(30L, "Manuel", "Gutierrez", sdf.parse("18-02-1970"), "Cádiz"));
+            
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Persona createPersona(Persona persona) {
+        return personas.put(persona.getId(), persona);
+    }
+
+    @Override
+    public Persona readPersona(Long id) {
+        return personas.get(id);
+    }
+
+    @Override
+    public Persona updatePersona(Persona persona) {
+        return personas.replace(persona.getId(), persona);
+    }
+
+    @Override
+    public void deletePersona(Long id) {
+        personas.remove(id);
+    }
+
+    @Override
+    public List<Persona> getAllPersonas() {
+        return new ArrayList<>(personas.values());
+    }
+}
+
+```
+
+
+# Persona
+
+```java
+import java.io.Serializable;
+import java.util.Date;
+
+public class Persona implements Serializable {
+    private static final long serialVersionUID = 1L;
+    
+    private long id;
+    private String nombre;
+    private String apellido;
+    private Date fechaNacimiento;
+    private String lugarNacimiento;
+
+    public Persona(long id, String nombre, String apellido, Date fechaNacimiento, String lugarNacimiento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.lugarNacimiento = lugarNacimiento;
+    }
+
+    // Getters y Setters para el nuevo atributo id y los demás atributos.
+    // Otros métodos, como toString, también pueden ir aquí si son necesarios.
+}
+
+```
