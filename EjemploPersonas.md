@@ -1,4 +1,4 @@
-# Interfaz 'PersonaService'
+# Interfaz 'PersonaService.java'
 
 ```java
 import java.util.List;
@@ -18,7 +18,7 @@ public interface PersonaService {
 
 ```
 
-# PersonaServiceImpl implementación Mocking de  'PersonaService' con datos ficticios
+# PersonaServiceImpl.java implementación Mocking de  'PersonaService' con datos ficticios
 
 
 ```java
@@ -77,7 +77,7 @@ public class PersonaServiceImpl implements PersonaService {
 ```
 
 
-# Persona
+# Persona.java
 
 ```java
 import java.io.Serializable;
@@ -104,4 +104,102 @@ public class Persona implements Serializable {
     // Otros métodos, como toString, también pueden ir aquí si son necesarios.
 }
 
+```
+
+#ListarPersona.jsp
+
+```jsp
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<html>
+<head>
+    <title>Listar Personas</title>
+</head>
+<body>
+    <h2>Listado de Personas</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Lugar de Nacimiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="persona" items="${personas}">
+                <tr>
+                    <td>${persona.id}</td>
+                    <td>${persona.nombre}</td>
+                    <td>${persona.apellido}</td>
+                    <td><fmt:formatDate value="${persona.fechaNacimiento}" pattern="dd-MM-yyyy"/></td>
+                    <td>${persona.lugarNacimiento}</td>
+                    <td><a href="detallePersona?id=${persona.id}"><button>Ver Detalle</button></a></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+```
+
+
+# Detalle de una persona
+```jsp
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<html>
+<head>
+    <title>Detalle de Persona</title>
+</head>
+<body>
+    <h2>Detalle de ${persona.nombre} ${persona.apellido}</h2>
+    <p>ID: ${persona.id}</p>
+    <p>Nombre: ${persona.nombre}</p>
+    <p>Apellido: ${persona.apellido}</p>
+    <p>Fecha de Nacimiento: <fmt:formatDate value="${persona.fechaNacimiento}" pattern="dd-MM-yyyy"/></p>
+    <p>Lugar de Nacimiento: ${persona.lugarNacimiento}</p>
+    <a href="listarPersonas"><button>Volver a la Lista</button></a>
+</body>
+</html>
+
+
+```
+
+
+## @ TODO
+# Usuario
+```java
+public class Usuario implements Serializable {
+    private String username;
+    private String password;
+    private long personaId; // Referencia a una persona mediante ID
+    
+    // Constructor, Getters, y Setters
+}
+```
+
+## Servlet ejemplo
+
+```java
+@WebServlet("/detalleUsuario")
+public class DetalleUsuarioServlet extends HttpServlet {
+    private PersonaService personaService; // Suponiendo que tengas un servicio para gestionar personas
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String username = req.getParameter("username"); // Obtén el nombre de usuario del request
+        Usuario usuario = // ... obtén el usuario basado en el username
+        long personaId = usuario.getPersonaId();
+        Persona persona = personaService.readPersona(personaId); // Obtén los detalles de la persona usando el ID
+
+        // Usa el objeto persona como sea necesario
+    }
+}
 ```
