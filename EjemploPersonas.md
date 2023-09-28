@@ -106,7 +106,7 @@ public class Persona implements Serializable {
 
 ```
 
-#ListarPersona.jsp
+# ListarPersona.jsp
 
 ```jsp
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
