@@ -1,5 +1,3 @@
-### TODO
-
 # Interfaz 'PersonaService'
 
 ```java
