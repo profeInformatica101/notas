@@ -1,1 +1,12 @@
 https://ngrok.com/download
+
+# Configuración del Proyecto
+
+## Configuración de Claves
+Este proyecto requiere la configuración de una clave privada y pública para la firma y verificación de tokens JWT.
+
+1. Genera un par de claves RSA usando un comando como el siguiente:
+   ```sh
+   openssl genpkey -algorithm RSA -out private_key.pem
+   openssl rsa -pubout -in private_key.pem -out public_key.pem
+```
