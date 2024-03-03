@@ -1,27 +1,25 @@
 #!/bin/bash
 
 # Directorio raíz que contiene los repositorios Git
-ROOT_DIR="/path/to/your/main/repository"
+ROOT_DIR="/home/ehko/Documentos/copiadeseguridad/API_Alumnos"
 
-# Fecha desde la cual buscar cambios
-SINCE_DATE="1/3/2023"
+# Fecha desde la cual buscar cambios (en formato ISO)
+SINCE_DATE="2024-02-29"
 
 # Cambiar al directorio raíz
-cd $ROOT_DIR
+cd "$ROOT_DIR" || exit
 
 # Recorrer cada subdirectorio
-for d in */ ; do
-    echo "Revisando cambios en el directorio $d"
-    cd $d
-
-    # Verificar si el subdirectorio es un repositorio Git
-    if [ -d ".git" ]; then
-        # Mostrar commits desde la fecha especificada
-        git log --since="$SINCE_DATE" --pretty=format:"%h - %an, %ar : %s"
-    else
-        echo "El directorio $d no es un repositorio Git."
+for d in */; do
+    if [ -d "$d/.git" ]; then
+       # echo "Revisando cambios en el directorio $d"
+        cd "$d" || exit
+        
+        # Verificar si hay cambios desde la fecha especificada
+        if git log --since="$SINCE_DATE" --exit-code &> /dev/null; then
+            echo "$d ha realizado cambios desde el $SINCE_DATE"
+        fi
+        
+        cd ..
     fi
-
-    # Volver al directorio raíz
-    cd ..
 done
