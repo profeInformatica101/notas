@@ -28,7 +28,8 @@ do
 
     # Clonar el repositorio de GitHub
     git clone "$repo_url" .
-
+    git config --global --add safe.directory "$(git rev-parse --show-toplevel)"
+	
     # Volver al directorio principal
     cd ..
   else
@@ -51,4 +52,5 @@ cd ..
 echo "Todos los repositorios válidos han sido clonados."
 echo "El repositorio API_Alumnos ha sido inicializado y está listo para ser subido a un repositorio remoto."
 sh comprueba.sh
+
 
