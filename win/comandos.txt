@@ -1,0 +1,1 @@
+wmic memorychip get banklabel, capacity, devicelocator, memorytype, speed
