@@ -1,4 +1,4 @@
-<a href="https://github.com/profeInformatica101/git>GIT COMANDOS ÚTILES</a>
+https://github.com/profeInformatica101/git
 # Log 
 ```sh
 git log --pretty=format:"%h - %an, %ar : %s"
